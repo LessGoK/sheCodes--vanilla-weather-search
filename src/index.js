@@ -24,11 +24,16 @@ function updateWeatherDetails(response) {
   let cityElement = document.querySelector("#current-city");
   let timeElement = document.querySelector("#current-date");
   let descriptionElement = document.querySelector("#current-description");
+  let humidityElement = document.querySelector("#current-humidity");
+  let windElement = document.querySelector("#current-wind");
+
   let date = new Date(response.data.time * 1000);
 
   cityElement.innerHTML = response.data.city;
   timeElement.innerHTML = formatDate(date);
   descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
 }
 
 function fetchData(city) {
