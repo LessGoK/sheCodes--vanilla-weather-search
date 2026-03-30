@@ -17,17 +17,18 @@ function formatDate(date) {
 
   if (minutes < 10) minutes = `0${minutes}`;
 
-  return `${days[day]}, ${hours}:${minutes}`;
+  return `${days[day]} ${hours}:${minutes}`;
 }
 
 function updateWeatherDetails(response) {
   let cityElement = document.querySelector("#current-city");
   let timeElement = document.querySelector("#current-date");
+  let descriptionElement = document.querySelector("#current-description");
   let date = new Date(response.data.time * 1000);
 
   cityElement.innerHTML = response.data.city;
-
   timeElement.innerHTML = formatDate(date);
+  descriptionElement.innerHTML = response.data.condition.description;
 }
 
 function fetchData(city) {
